@@ -4,12 +4,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Driver {
+public class DriverKiwi {
     private static AndroidDriver<AndroidElement> appiumDriver;
     static final String TELEFONADI = "Pixel";
     static final String ANDROIDVERSION = "10.0";
@@ -34,6 +33,7 @@ public class Driver {
             caps.setCapability(MobileCapabilityType.NO_RESET, false);
             // true uygulama sifirlanmiyor onceki adimlari muhafaza ediyor
             //false ise her test baslangicinda sifirliyor
+
             if (ConfigReader.getProperty("platformName").equals("Android")) {
                 assert appiumServerURL != null;
                 appiumDriver = new AndroidDriver<AndroidElement>(appiumServerURL, caps);
