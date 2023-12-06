@@ -1,21 +1,35 @@
 package utilities;
 
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class ReusableMethods {
-    static TouchAction action = new TouchAction<>(Driver.getAndroidDriver());
-    public static void tiklamaMetodu(int x , int y,int beklemeSuresiSaniye) throws InterruptedException {
+import java.time.Duration;
 
-        action.press(PointOption.point(x,y))
+public class ReusableMethods {
+
+    public static void tiklamaMethodu(int xKoordinati,int yKoordinati,int beklemeSuresi) throws InterruptedException {
+        TouchAction action=new TouchAction<>(Driver.getAndroidDriver());
+        action.press(PointOption.point(xKoordinati,yKoordinati))
                 .release()
                 .perform();
-        Thread.sleep(beklemeSuresiSaniye*1000);
+        Thread.sleep(beklemeSuresi);
     }
 
-    public static void screenScroolMetodu(){
-
-
+    public static void screenScroolMethod(int pressXkoordinati,int pressYkoordinati,int wait,int moveXkoordinati,int moveYkoordinati,int bekleme) throws InterruptedException {
+        TouchAction action=new TouchAction<>(Driver.getAndroidDriver());
+        action.press(PointOption.point(pressXkoordinati,pressYkoordinati))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
+                .moveTo(PointOption.point(moveXkoordinati,moveYkoordinati))
+                .release()
+                .perform();
+        Thread.sleep(bekleme);
     }
 
+    public static void scrollWithUiScrollable(String elementText) {
+        AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
+        driver.findElementByXPath("//*[@text='" + elementText + "']").click();
+    }
 }

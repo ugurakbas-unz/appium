@@ -18,7 +18,7 @@ public class apk {
     public void app() throws MalformedURLException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel2");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "PIXEL2");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.0");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
@@ -28,5 +28,11 @@ public class apk {
         capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\Ugur\\IdeaProjects\\appiumDeneme\\apps\\Kiwi.com - Book Cheap Flights_2023.14.0_Apkpure (1).apk"); // bu satıra apk yolu yazılır
         driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        //caps.setCapability("appPackage", "com.skypicker.main");
+        //caps.setCapability("appActivity", "com.kiwi.android.feature.splash.impl.ui.SplashActivity");
+
+        //caps.setCapability("appPackage","com.smartwho.SmartAllCurrencyConverter");
+        //caps.setCapability("appActivity","com.smartwho.SmartAllCurrencyConverter.CurrencyConverter");
     }
 }

@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import java.util.concurrent.TimeUnit;
-public class Test01 {
+public class KurulrmTest {
 
     AndroidDriver<MobileElement> driver;
 
